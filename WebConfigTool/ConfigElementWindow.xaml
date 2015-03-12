@@ -1,0 +1,67 @@
+﻿<Window x:Class="WebConfigTool.ConfigElementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Converters="clr-namespace:WebConfigTool.Converters" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="clr-namespace:WebConfigTool.ViewModel"
+        Title="Configuration Element" Height="480" Width="640" Closing="Window_Closing">
+    <Window.Resources>
+        <Converters:VisibleIfTrue x:Key="VisibleIfTrue"/>
+        <Converters:CollapsedIfNullOrEmpty x:Key="CollapsedIfNullOrEmpty"/>
+        <Converters:YesOrNo x:Key="YesOrNo"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:ConfigElementVM_obsolete />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Name:"/>
+            <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding Name}"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Source:"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Source, Mode=OneWay}"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Line Number:"/>
+            <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding LineNumber, Mode=OneWay}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Properties" Margin="0,8,0,0" FontWeight="Bold" Visibility="{Binding ShowPropertiesColumn, Converter={StaticResource VisibleIfTrue}, Mode=OneWay}" />
+            <TextBlock Text="Elements" Grid.Column="1" Margin="8,8,0,0" FontWeight="Bold" />
+            <DataGrid Grid.Row="1" Margin="0,0,5,0" ItemsSource="{Binding Properties}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Visibility="{Binding ShowPropertiesColumn, Converter={StaticResource VisibleIfTrue}, Mode=OneWay}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding ValueAsText, Mode=OneWay}" ClipboardContentBinding="{x:Null}" Header="Value" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <GridSplitter Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Left" Width="5" />
+            <DataGrid Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" ItemsSource="{Binding Elements}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{Binding Name}" Header="Name" Width="*"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Open" Command="{Binding OpenCommand, Mode=OneWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

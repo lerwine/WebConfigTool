@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0384F616-FC76-44BA-BEA9-011A7361521A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebConfigTool</RootNamespace>
+    <AssemblyName>WebConfigTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ConfigElementWindow.xaml.cs">
+      <DependentUpon>ConfigElementWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationSectionGroupWindow.xaml.cs">
+      <DependentUpon>ConfigurationSectionGroupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationSectionWindow.xaml.cs">
+      <DependentUpon>ConfigurationSectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\CollapsedIfNullOrEmpty.cs" />
+    <Compile Include="Converters\CollapsedIfNullOrWhitespace.cs" />
+    <Compile Include="Converters\VisibleIfFalse.cs" />
+    <Compile Include="Converters\VisibleIfNullOrEmpty.cs" />
+    <Compile Include="Converters\VisibleIfNullOrWhitespace.cs" />
+    <Compile Include="Converters\VisibleIfTrue.cs" />
+    <Compile Include="Converters\YesOrNo.cs" />
+    <Compile Include="ViewModel\ApplicationSettingsGroupVM.cs" />
+    <Compile Include="ViewModel\ConfigElementVM_obsolete.cs" />
+    <Compile Include="ViewModel\ElementCollectionVM.cs" />
+    <Compile Include="ViewModel\ElementErrorVM.cs" />
+    <Compile Include="ViewModel\ElementVM.cs" />
+    <Compile Include="ViewModel\IConfigAttribute.cs" />
+    <Compile Include="ViewModel\IConfigElement.cs" />
+    <Compile Include="ViewModel\IConfigElementCollection.cs" />
+    <Compile Include="ViewModel\IConfigListItem.cs" />
+    <Compile Include="ViewModel\IConfigProperty.cs" />
+    <Compile Include="ViewModel\IConfigSection.cs" />
+    <Compile Include="ViewModel\IItemCategory.cs" />
+    <Compile Include="ViewModel\IPropertyDerrivedElement.cs" />
+    <Compile Include="ViewModel\ConfigSectionGroupContainerVM_obsolete.cs" />
+    <Compile Include="ViewModel\ConfigurationSectionGroupVM_obsolete.cs" />
+    <Compile Include="ViewModel\ConfigurationSectionVM_obsolete.cs" />
+    <Compile Include="ViewModel\ConfigAttributeVM_obsolete.cs" />
+    <Compile Include="ViewModel\EnumOptionCollection.cs" />
+    <Compile Include="ViewModel\EnumOptionItemVM.cs" />
+    <Compile Include="ViewModel\ErrorMessageVM.cs" />
+    <Compile Include="ViewModel\ISectionGroup.cs" />
+    <Compile Include="ViewModel\ItemCategoryVM.cs" />
+    <Compile Include="ViewModel\MailSettingsSectionGroupVM.cs" />
+    <Compile Include="ViewModel\MainWindowVM.cs" />
+    <Compile Include="ViewModel\NetSectionGroupVM.cs" />
+    <Compile Include="ViewModel\NullableEnumOptionCollection.cs" />
+    <Compile Include="ViewModel\NullableEnumOptionItemVM.cs" />
+    <Compile Include="ViewModel\OptionCollection.cs" />
+    <Compile Include="ViewModel\OptionItemVM.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\SectionGroupCategoryVM.cs" />
+    <Compile Include="ViewModel\SectionGroupVM.cs" />
+    <Compile Include="ViewModel\SectionsGroupingVM.cs" />
+    <Compile Include="ViewModel\SectionVM.cs" />
+    <Compile Include="ViewModel\SelectedIndexChangedEventArgs.cs" />
+    <Compile Include="ViewModel\ServiceModelSectionGroupVM.cs" />
+    <Compile Include="ViewModel\StringOptionItemVM.cs" />
+    <Compile Include="ViewModel\SystemWebSectionGroupVM.cs" />
+    <Compile Include="ViewModel\ValueChangedEventArgs.cs" />
+    <Compile Include="ViewModel\WebConfigVM.cs" />
+    <Compile Include="ViewModel\WebConfigVM_obsolete.cs" />
+    <Compile Include="WebConfigControl.xaml.cs">
+      <DependentUpon>WebConfigControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ConfigElementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfigurationSectionGroupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfigurationSectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="WebConfigControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="ViewModel\VMInterfaces.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
